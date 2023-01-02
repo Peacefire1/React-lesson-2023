@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React-Day-01</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <h1>Day-33-RectJs Introduction</h1>
+
+    <div id="root"></div>
+    <div id="texts">Lorem ipsum dolor sit amet.</div>
+    <div id="images"></div>
+    <div id="select"></div>
+
+    
+    <script type="text/babel">
+
+        //React code will go here
+        function Hello(){
+            return <h1>Hello React</h1>
+        }
+        function Texts(){
+            return <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit, laborum ad eligendi quia veritatis ratione, voluptatem molestiae iste, officiis odit reprehenderit. Dicta eum voluptate tenetur similique maxime sapiente reprehenderit culpa.</p>
+        }
+        function Images(){
+            return <img src="https://pbs.twimg.com/profile_images/1366466342354751491/JyhZpbtu_400x400.jpg" alt="Goku"/>
+        }
+
+        function Select(){
+            return (
+            <div>
+                <select name="" id="selector">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    </select>
+                     <input type="text" />
+                     <input type="submit" />
+            </div>    
+            )
+        }
+        ReactDOM.render(<Select />,document.getElementById("select"))
+        ReactDOM.render(<Images />,document.getElementById("images"))
+        ReactDOM.render(<Texts />,document.getElementById("texts"))
+
+
+        ReactDOM.render(<Hello />, document.getElementById("root"))
+    </script>
+
+
+    <!-- <script src="./js/math.js"></script> -->
+
+    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</body>
+
+</html>
