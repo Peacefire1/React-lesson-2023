@@ -10,6 +10,7 @@ import ProductFunc from './productFunc';
 import ProductFunc1 from './productFunc1';
 import ProductFunc2 from './productFunc2';
 import ProductFunc3 from './productFunc3';
+import products from './seed';
 
 function App() {
 
@@ -38,20 +39,32 @@ function App() {
   //   </h1>
   // );
   
+  const productList = products.map((product)=> {
+    console.log(product)
+    return <ProductFunc 
+    id={product.id}
+    title={product.title}
+    description={product.description}
+    url={product.url}
+    votes={product.votes}
+    submitterAvatarUrl={product.submitterAvatarUrl}
+    />
+  })
   return (
     <div>
       <h1>Popular Products</h1>
       {/* {elements} */}
       {/* {secondElement} */}
       {/* <HelloWorld/> */}
-      <Product/>
+      {productList}
+      {/* <Product/>
       <Product1 />
       <Product2 />
       <Product4 />
       <ProductFunc/>
       <ProductFunc1/>
       <ProductFunc2/>
-      <ProductFunc3/>
+      <ProductFunc3/> */}
     </div> 
      
       
