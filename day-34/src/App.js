@@ -38,16 +38,17 @@ function App() {
   //     Hello , {formatName(user)}!
   //   </h1>
   // );
-  
-  const productList = products.map((product)=> {
+
+  const productList = products.map((product) => {
     console.log(product)
-    return <ProductFunc 
-    id={product.id}
-    title={product.title}
-    description={product.description}
-    url={product.url}
-    votes={product.votes}
-    submitterAvatarUrl={product.submitterAvatarUrl}
+    return <ProductFunc
+      id={product.id}
+      title={product.title}
+      description={product.description}
+      url={product.url}
+      votes={product.votes}
+      submitterAvatarUrl={product.submitterAvatarUrl}
+      stars={product.stars}
     />
   })
   return (
@@ -65,10 +66,10 @@ function App() {
       <ProductFunc1/>
       <ProductFunc2/>
       <ProductFunc3/> */}
-    </div> 
-     
-      
-     
+    </div>
+
+
+
   );
 }
 
