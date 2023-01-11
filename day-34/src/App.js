@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import './App.css';
 
 // import HelloWorld from "./helloworld";
@@ -38,9 +39,31 @@ function App() {
   //     Hello , {formatName(user)}!
   //   </h1>
   // );
+  const [ProductList, setProductlist] = useState(products)
+  function handleUpVote(progductId) {
+    console.log("upvote", progductId)
+    const foundProduct = products.filter(product => {
+      if (product.id == progductId) {
+        return product
+      }
+    })
+    console.log(foundProduct[0].votes);
+    foundProduct[0].votes += 1
 
+    const NewProducts = ProductList.map(product => {
+      if (product.id == progductId) {
+        return Object.assign({}, product, {
+          votes: product.votes + 1
+        })
+      } else {
+        return product;
+      }
+    })
+    console.log(products);
+    setProductlist(NewProducts)
+  }
   const productList = products.map((product) => {
-    console.log(product)
+    // console.log(product)
     return <ProductFunc
       id={product.id}
       title={product.title}
@@ -49,6 +72,7 @@ function App() {
       votes={product.votes}
       submitterAvatarUrl={product.submitterAvatarUrl}
       stars={product.stars}
+      onVote={handleUpVote}
     />
   })
   return (

@@ -26,19 +26,18 @@ import { Rating } from 'react-simple-star-rating'
 // }
 function ProductFunc(props) {
     const [stars, setStars] = useState(props.stars)
-    const [votes, setVotes] = useState(props.votes)
-    // const 
-    function handleUpVote(props) {
-        setVotes(votes + 1)
+    // const [votes, setVotes] = useState(props.votes)
+    // function handleUpVote(props) {
+    //     setVotes(votes + 1)
 
-        if (stars >= 5) {
-            setStars(5)
-        } else {
-            setStars(stars + 1)
-        }
+    //     if (stars >= 5) {
+    //         setStars(5)
+    //     } else {
+    //         setStars(stars + 1)
+    //     }
 
 
-    }
+    // }
     function handDownVote(params) {
         setStars(stars - 1)
 
@@ -48,7 +47,7 @@ function ProductFunc(props) {
             <div className="r1">
                 <img className="rounded-5" src={props.submitterAvatarUrl} alt=""></img>
                 <div>
-                    <p><img onClick={() => { handleUpVote(props) }} className='lg ' src={logo} /><strong>{votes}</strong></p>
+                    <p><img onClick={() => props.onVote(props.id)} className='lg ' src={logo} /><strong>{props.votes}</strong></p>
                     <a href="#">{props.title}</a>
                     <p>{props.description}</p>
                     <br />
