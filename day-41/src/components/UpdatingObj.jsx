@@ -21,6 +21,7 @@ export default function UpdatingObjects() {
             <button onClick={check}>
                 User age is {user.age}
             </button>
+            <button>s</button>
         </div>
     )
 }
