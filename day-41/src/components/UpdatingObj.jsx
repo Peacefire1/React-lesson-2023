@@ -22,6 +22,9 @@ export default function UpdatingObjects() {
                 User age is {user.age}
             </button>
             <button>s</button>
+            <button>s</button>
+            <button>s</button>
+            <button>s</button>
         </div>
     )
 }
