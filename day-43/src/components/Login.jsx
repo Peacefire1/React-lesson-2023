@@ -6,7 +6,7 @@ export default function Login() {
             <h1>It's login page</h1>
             <form action="">
                 <label htmlFor="email">email:</label>
-                <input name="email" type="email" value="" /><br />
+                <input name="email" type="email" /><br />
                 <label htmlFor="Password">Password:</label>
                 <input name="password" type="password" />
                 <br />
