@@ -25,6 +25,7 @@ export default function Index() {
                 <Link to={"/movies"}>Movies Page</Link>
                 <Link to={"/gallery"}>Image Gallery Page</Link>
                 <Link to={"/toast"}>Toaster Page</Link>
+                
             </nav>
         </div>
     )
