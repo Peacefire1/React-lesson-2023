@@ -22,7 +22,7 @@ export default function Movie() {
             <div>
                 {location.state.ISBN}
             </div> */}
-            {movie &&
+            {
                 movie.map((m, idx) => {
                     return (
                         <div key={idx}>
