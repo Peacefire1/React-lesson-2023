@@ -21,6 +21,9 @@ export default function Exercises() {
     }
 
     const numbers = findNumberCount(array);
+
+
+    
     console.log(numbers);
 
 
