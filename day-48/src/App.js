@@ -4,6 +4,7 @@ import Input from './components/input';
 import Anime from './components/Anime';
 import Button from './components/Button';
 import TopAnime from './components/TopAnime';
+import Exercises from './components/exercises';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Button />
       <Input />
       <TopAnime />
-
+      <Exercises />
     </div>
   );
 }

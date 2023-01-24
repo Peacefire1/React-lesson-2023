@@ -14,7 +14,7 @@ export default function Accordion() {
             <Panel title="elit" isActive={activeIndex === 1} OnShow={() => setActiveIndex(1)}>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium rem incidunt, eius perspiciatis modi iste eaque nihil, odit libero illum, tempore quam doloremque accusantium. Voluptates dolore molestias unde dolor odit.
             </Panel>
-
+            
         </div>
     )
 }
