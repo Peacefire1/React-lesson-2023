@@ -1,36 +1,63 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import TimerData from "../data/data"
+import EditableTimerList from "./EditableTimerList";
 import Timer from "./timer"
 import TimerForm from "./TimerForm";
 
 export default function TimerDashbaord() {
 
-    const [projectData, setProjectData] = useState([]);
-    const [runningTime, setRunningTime] = useState(0);
+    // const [projectData, setProjectData] = useState([]);
+    // const [runningTime, setRunningTime] = useState(0);
+    const [timers, setTimers] = useState({ timers: [] })
 
     useEffect(() => {
-        setProjectData(TimerData);
+        setInterval(() => setTimers({ timers: TimerData }), 1000)
 
-    }, [projectData])
+    }, [])
+
+    function handleStartClick(timerId) {
+        startTimer(timerId);
+    }
+
+    function startTimer(timerId) {
+        const now = Date.now()
+        setTimers({
+            timers: timers.timers.map(timer => {
+                if (timer.id === timerId) {
+                    timer.runningSince = now
+                    return timer
+                } else {
+                    return timer
+                }
+            })
+        })
+    }
 
 
+    function handleTrashClick(timerId) {
+        deleteTimer(timerId)
+    }
+
+    function deleteTimer(timerId) {
+        setTimers({
+            timers: timers.timers.filter((t) => t.id !== timerId)
+        })
+    }
 
     return (
         <div>
             <h1>Timmers</h1>
-            {TimerData &&
-                TimerData.map((data, index) => {
-                    return <Timer
-                        key={index}
-                        project={data.project}
-                        title={data.title}
-                        elapsed={data.elapsed}
-                        runningSince={data.runningSince}
-                        runningTime={runningTime}
+
+            {
+                timers.timers && <div>
+                    <EditableTimerList timers={timers.timers}
+                        onTrashClick={handleTrashClick}
+                        onStartClick={handleStartClick}
                     />
-                })}
-            <TimerForm />
+
+                </div>
+            }
         </div>
     )
 }
