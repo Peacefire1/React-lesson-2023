@@ -8,11 +8,19 @@ import { useState } from "react";
 import { renderElapsedString } from "./Helpers";
 
 
-export default function Timer({ title, project, elapsed, runningSince, runningTime }) {
+export default function Timer({ id, title, project, elapsed, runningSince, onTrashClick, onStartClick }) {
 
     const [timerIsRunning, setTimerIsRunnning] = useState(false)
     const timer = renderElapsedString(elapsed, runningSince)
 
+    function handleStartClick() {
+        onStartClick(id);
+    }
+
+
+    function handleDelete() {
+        onTrashClick(id)
+    }
 
     return (
         <Container maxWidth="sm">
@@ -24,21 +32,19 @@ export default function Timer({ title, project, elapsed, runningSince, runningTi
                     {project}
                 </Typography>
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <h1>{runningTime}</h1>
+                    <h1>{ }</h1>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                     <h1>{timer}</h1>
                 </Box>
                 <Box sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", marginBottom: 2 }}>
-                    <DeleteIcon />
+                    <DeleteIcon onClick={handleDelete} />
                     <ModeIcon />
                 </Box>
-                <TimerActionButton isTimerRunning={timerIsRunning}
-                    onStartClick={() => {
-                        setTimerIsRunnning(true);
-                    }}
+                <TimerActionButton isTimerRunning={runningSince}
+                    onStartClick={handleStartClick}
                     onStopClick={() => {
-                        setTimerIsRunnning(false);
+                        console.log("Stop");
                     }}
                 />
             </Card>
