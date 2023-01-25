@@ -1,7 +1,28 @@
 import { Button, Card, CardContent, Grid, TextField } from "@mui/material";
+import { useState } from "react";
 
-export default function TimerForm({ id, title, project }) {
+export default function TimerForm({ id, title, project, onFormSubmit, onFormClose }) {
     const submitText = id ? "update" : "Create"
+    const [timer, setTimer] = useState({
+        title: title || "",
+        project: project || ""
+    })
+
+    function handleTitleChange(e) {
+        setTimer({
+            ...timer,
+            title: e.target.value,
+        })
+    }
+
+    function handleProjectChange(e) {
+        setTimer({
+            ...timer,
+            project: e.target.value
+        })
+    }
+
+
 
     return (
         <div>
@@ -14,22 +35,28 @@ export default function TimerForm({ id, title, project }) {
                                 <Grid item xs={12}>
                                     <TextField
                                         type="text"
-                                        placeholder={title}
+                                        placeholder={timer.title}
+                                        label={"Title"}
+                                        value={timer.title}
                                         variant={"outlined"}
                                         fullWidth={true}
+                                        onChange={handleTitleChange}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
                                         type="text"
-                                        placeholder={project}
+                                        placeholder={timer.project}
+                                        label={"Project"}
+                                        value={timer.project}
                                         variant={"outlined"}
                                         fullWidth={true}
+                                        onChange={handleProjectChange}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <Button color={"success"} variant={"outlined"}>{submitText}</Button>
-                                    <Button color={"success"} variant={"outlined"}>Create</Button>
+                                    <Button color={"success"} variant={"outlined"} onClick={onFormSubmit}>{submitText}</Button>
+                                    <Button color={"success"} variant={"outlined"} onClick={onFormClose}>Create</Button>
                                 </Grid>
                             </Grid>
                         </form>
