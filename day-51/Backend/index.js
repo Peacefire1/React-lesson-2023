@@ -50,6 +50,24 @@ app.delete("/data", (request, response) => {
   response.json(data);
 });
 
+app.put("/data", (request, response) => {
+  const found = data.filter((d) => d.id !== request.body.id);
+  console.log(found);
+  console.log(request.body);
+  console.log(data);
+
+  const newData = data.map((d) => {
+    if (d.id === request.body.id) {
+      (d.name = request.body.name), (d.major = request.body.major);
+    }
+    return d;
+  });
+
+  data = newData;
+
+  response.json(data);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

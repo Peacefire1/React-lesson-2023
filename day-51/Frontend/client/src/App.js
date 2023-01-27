@@ -14,6 +14,9 @@ function App() {
 
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpenForm, setIsOpenForm] = useState(false);
+  const [currentData, setCurrentData] = useState({});
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -44,6 +47,10 @@ function App() {
     };
     deleteData(data);
   }
+  function handleEdit(data) {
+    setCurrentData(data);
+    setIsOpenForm(true);
+  }
 
   return (
     <div className="App">
@@ -64,6 +71,7 @@ function App() {
                   {d.name} --- {d.major}
                 </p>
                 <button onClick={() => handleDelete(d.id)}>Delete</button>
+                <button onClick={() => handleEdit(d)}>Edit</button>
               </div>
             );
           })}
