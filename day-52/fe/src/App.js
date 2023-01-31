@@ -3,12 +3,45 @@ import { useEffect, useState } from "react";
 
 function App() {
   const URL = "http://localhost:8080/users";
+  const newUser = {
+    id: "",
+    username: "",
+    age: "",
+  };
 
   const [users, setUsers] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [currentUser, setCurrentUser] = useState(newUser);
 
   useEffect(() => {
     fetchAllData();
   }, []);
+  async function handleUserName(e) {
+    setCurrentUser({
+      ...currentUser,
+      username: e.target.value,
+    });
+  }
+  async function handleUserAge(e) {
+    setCurrentUser({
+      ...currentUser,
+      age: e.target.value,
+    });
+  }
+
+  async function handleEdit(userId) {
+    setIsUpdate(true);
+
+    const filteredUser = users.filter((user) => user.id === userId)[0];
+
+    if (filteredUser) {
+      setCurrentUser({
+        id: filteredUser.id,
+        age: filteredUser.age,
+        username: filteredUser.username,
+      });
+    }
+  }
 
   async function fetchAllData() {
     const FETCHED_DATA = await fetch(URL); //respone
@@ -32,23 +65,43 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const postData = {
-      username: e.target.username.value,
-      age: e.target.age.value,
-    };
+    if (!isUpdate) {
+      const postData = {
+        username: e.target.username.value,
+        age: e.target.age.value,
+      };
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    };
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      };
 
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON.data);
-    console.log(FETCHED_JSON);
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      setUsers(FETCHED_JSON.data);
+      console.log(FETCHED_JSON);
+    } else {
+      const putData = {
+        id: currentUser.id,
+        username: currentUser.username,
+        age: currentUser.age,
+      };
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(putData),
+      };
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      setUsers(FETCHED_JSON.data);
+      setIsUpdate(false);
+      setCurrentUser(newUser);
+    }
   }
   return (
     <div className="App">
@@ -57,15 +110,25 @@ function App() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="">
           User name:
-          <input type="text" name="username" />
+          <input
+            type="text"
+            name="username"
+            value={currentUser.username}
+            onChange={handleUserName}
+          />
         </label>
         <br />
         <label htmlFor="">
           Age:
-          <input type="text" name="age" />
+          <input
+            type="text"
+            name="age"
+            value={currentUser.age}
+            onChange={handleUserAge}
+          />
         </label>
         <br />
-        <button>Submit</button>
+        <button>{isUpdate ? "Update" : "Submit"}</button>
       </form>
       <h3>Users List</h3>
       {users &&
@@ -76,6 +139,7 @@ function App() {
                 {user.username} : {user.age}
               </p>{" "}
               <button onClick={() => handleDelete(user.id)}>Delete</button>
+              <button onClick={() => handleEdit(user.id)}>Edit</button>
             </div>
           );
         })}
