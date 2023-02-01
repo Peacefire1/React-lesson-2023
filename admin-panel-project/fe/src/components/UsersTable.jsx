@@ -1,41 +1,121 @@
 import * as React from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridLinkOperator } from "@mui/x-data-grid";
+import { Avatar, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 export default function UsersTable() {
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      width: 90,
+      field: "Images",
+      headerName: "Image",
+      width: 130,
+      renderCell: (params) => {
+        console.log(params);
+        return (
+          <>
+            <Avatar src={params.row.Images} />
+            {/* {params.row.firstName} */}
+          </>
+        );
+      },
     },
     {
-      field: "fullName",
-      headerName: "Full name",
+      field: "title",
+      headerName: "Title",
+      width: 100,
+    },
+    {
+      field: "Subtitle",
+      headerName: "Subtitle",
+      type: "number",
+      width: 140,
+    },
+    {
+      field: "Price",
+      headerName: "Price",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
       width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    },
+    {
+      field: "Action",
     },
   ];
 
   const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+    {
+      id: 1,
+      Images: "images/daniel.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 2,
+      Images: "images/elliot.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 3,
+      Images: "images/jenny.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 4,
+      Images: "images/steve.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 5,
+      Images: "images/stevie.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 6,
+      Images: "images/molly.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 7,
+      Images: "images/mathhew.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 8,
+      Images: "images/kristy.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
+    {
+      id: 9,
+      Images: "images/helen.jpg",
+      Price: "$45",
+      Subtitle: "Trainers In Blue",
+      title: "Boots",
+    },
   ];
 
   return (
     <div style={{ height: 400, width: "100%" }}>
+      <Link to={"/users/product"}>
+        <Button className="button" variant="contained" color="success">
+          CREATE PRODUCT
+        </Button>
+      </Link>
+
       <DataGrid
         rows={rows}
         columns={columns}
