@@ -1,5 +1,12 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import {
+  createUser,
+  fetchAllData,
+  deleteUser,
+  updateUser,
+} from "./services/userServices";
+// import { fetchAllData } from "./services/axiosUsersServices";
 
 function App() {
   const URL = "http://localhost:8080/users";
@@ -14,7 +21,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(newUser);
 
   useEffect(() => {
-    fetchAllData();
+    fetchAllData(URL, setUsers);
   }, []);
   async function handleUserName(e) {
     setCurrentUser({
@@ -43,64 +50,30 @@ function App() {
     }
   }
 
-  async function fetchAllData() {
-    const FETCHED_DATA = await fetch(URL); //respone
-    const FETCHED_JSON = await FETCHED_DATA.json(); //{status: "success" , data : [{id: ...}]}
-    setUsers(FETCHED_JSON.data);
-  }
   async function handleDelete(userId) {
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-      }),
-    };
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON.data);
+    deleteUser(userId, URL, setUsers);
   }
-
+  // async function createUser(
+  //   currentUser,
+  //   URL,
+  //   setUsers,
+  //   setIsUpdate,
+  //   setCurrentUser,
+  //   newUser
+  // ) {}
   async function handleSubmit(e) {
     e.preventDefault();
     if (!isUpdate) {
-      const postData = {
-        username: e.target.username.value,
-        age: e.target.age.value,
-      };
-
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(postData),
-      };
-
-      const FETCHED_DATA = await fetch(URL, options);
-      const FETCHED_JSON = await FETCHED_DATA.json();
-      setUsers(FETCHED_JSON.data);
-      console.log(FETCHED_JSON);
+      updateUser(e, URL, setUsers);
     } else {
-      const putData = {
-        id: currentUser.id,
-        username: currentUser.username,
-        age: currentUser.age,
-      };
-      const options = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(putData),
-      };
-      const FETCHED_DATA = await fetch(URL, options);
-      const FETCHED_JSON = await FETCHED_DATA.json();
-      setUsers(FETCHED_JSON.data);
-      setIsUpdate(false);
-      setCurrentUser(newUser);
+      createUser(
+        currentUser,
+        URL,
+        setUsers,
+        setIsUpdate,
+        setCurrentUser,
+        newUser
+      );
     }
   }
   return (
