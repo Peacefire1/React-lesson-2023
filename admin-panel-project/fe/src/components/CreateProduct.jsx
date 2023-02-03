@@ -1,70 +1,127 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
+import { useState } from "react";
 
 export default function CreateProduct() {
+  const URL = "http://localhost:8081/users";
+  const [users, setUsers] = useState([]);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const postData = {
+      Title: e.target.title.value,
+      Subtitle: e.target.Subtitle.value,
+    };
+    console.log(postData);
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postData),
+    };
+
+    const FETCHED_DATA = await fetch(URL, options);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    setUsers(FETCHED_JSON.data);
+    console.log(users);
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1>New Product</h1>
-      <label style={{ fontSize: 30, margin: 50 }}>Iamge: </label>
       <TextField
+        name="Image"
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Iamge"
         variant="filled"
       />
       <br />
       <br />
-      <label style={{ fontSize: 30, margin: 50 }}>Title: </label>
       <TextField
+        name="Title"
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Title"
         variant="filled"
       />
       <br />
       <br />
-      <label style={{ fontSize: 30, margin: 50 }}>Subtitle: </label>
       <TextField
+        name="Subtitle"
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Subtitle"
         variant="filled"
       />
       <br />
       <br />
-      <label style={{ fontSize: 30, margin: 50 }}>Discount: </label>
       <TextField
+        name="Discount"
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Discount"
         variant="filled"
       />
       <br />
       <br />
-      <label style={{ fontSize: 30, margin: 50 }}>Description1: </label>
       <TextField
+        name="Description1"
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Description1"
         variant="filled"
       />
       <br />
       <br />
-      <label style={{ fontSize: 30, margin: 50 }}>Description2: </label>
       <TextField
+        name="Description2"
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Description2"
         variant="filled"
       />
       <br />
       <br />
-      <label style={{ fontSize: 30, margin: 50 }}>Code: </label>
       <TextField
         sx={{ width: 500 }}
         id="filled-basic"
-        label="Filled"
+        label="Code"
         variant="filled"
       />
+      <br />
+      <br />
+      <TextField
+        sx={{ width: 500 }}
+        id="filled-basic"
+        label="Hashtag"
+        variant="filled"
+      />
+      <br />
+      <br />
+      <TextField
+        name="Title"
+        sx={{ width: 500 }}
+        id="filled-basic"
+        label="Technology"
+        variant="filled"
+      />
+      <br />
+      <br />
+      <TextField
+        sx={{ width: 500 }}
+        id="filled-basic"
+        label="Rating"
+        variant="filled"
+      />
+      <br />
+      <div className="button">
+        <Button color="secondary" type="submit">
+          Save
+        </Button>
+        <Button variant="contained" color="success">
+          Back
+        </Button>
+      </div>
     </form>
   );
 }
