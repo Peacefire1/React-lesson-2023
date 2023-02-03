@@ -1,44 +1,61 @@
 import * as React from "react";
 import { DataGrid, GridLinkOperator } from "@mui/x-data-grid";
-import { Avatar, Button } from "@mui/material";
+import { Avatar, Box, Button, ListItemButton } from "@mui/material";
 import { Link } from "react-router-dom";
 export default function UsersTable() {
   const columns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { field: "id", images: "URL", width: 70 },
     {
       field: "Images",
-      headerName: "Image",
+      images: "Image",
       width: 130,
       renderCell: (params) => {
         console.log(params);
         return (
           <>
             <Avatar src={params.row.Images} />
-            {/* {params.row.firstName} */}
           </>
         );
       },
     },
+
     {
-      field: "title",
-      headerName: "Title",
+      field: "Title",
+      images: "Title",
       width: 100,
     },
     {
       field: "Subtitle",
-      headerName: "Subtitle",
+      images: "Subtitle",
       type: "number",
       width: 140,
     },
     {
       field: "Price",
-      headerName: "Price",
+      images: "Price",
       description: "This column has a value getter and is not sortable.",
       sortable: false,
-      width: 160,
+      width: 100,
+    },
+    {
+      field: "Rating",
     },
     {
       field: "Action",
+    },
+    {
+      field: "Button",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <Box>
+            <ListItemButton>
+              <Button>Edit</Button>
+              <Button>Delete</Button>
+            </ListItemButton>
+          </Box>
+        );
+      },
     },
   ];
 
@@ -110,7 +127,7 @@ export default function UsersTable() {
 
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <Link to={"/users/product"}>
+      <Link className="link" to={"/users/product"}>
         <Button className="button" variant="contained" color="success">
           CREATE PRODUCT
         </Button>
