@@ -7,8 +7,9 @@ export default function CreateProduct() {
   async function handleSubmit(e) {
     e.preventDefault();
     const postData = {
-      Title: e.target.title.value,
+      Title: e.target.Title.value,
       Subtitle: e.target.Subtitle.value,
+      
     };
     console.log(postData);
 
@@ -83,6 +84,7 @@ export default function CreateProduct() {
       <br />
       <br />
       <TextField
+        name="Code"
         sx={{ width: 500 }}
         id="filled-basic"
         label="Code"
@@ -91,6 +93,7 @@ export default function CreateProduct() {
       <br />
       <br />
       <TextField
+        name="Hashtag"
         sx={{ width: 500 }}
         id="filled-basic"
         label="Hashtag"
@@ -99,7 +102,7 @@ export default function CreateProduct() {
       <br />
       <br />
       <TextField
-        name="Title"
+        name="Technology"
         sx={{ width: 500 }}
         id="filled-basic"
         label="Technology"
@@ -108,6 +111,7 @@ export default function CreateProduct() {
       <br />
       <br />
       <TextField
+        name="Rating"
         sx={{ width: 500 }}
         id="filled-basic"
         label="Rating"
