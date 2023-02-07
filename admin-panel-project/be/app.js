@@ -11,7 +11,6 @@ const PORT = 8081;
 app.use(cors());
 app.use(express.json());
 
-//
 app.get("/users", (request, response) => {
   fs.readFile("./data/ProductData.json", "utf-8", (readError, readData) => {
     if (readError) {
