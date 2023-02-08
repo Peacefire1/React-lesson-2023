@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import List from "./components/List";
+import StopWatch from "./components/StopWatch";
 
 function App() {
   const [isLarge, setIsLarge] = useState(false);
@@ -13,12 +14,14 @@ function App() {
 
   return (
     <div className="App">
-      <label htmlFor="">
+      <h1>Day-50 -useRef</h1>
+      <StopWatch />
+      {/* <label htmlFor="">
         Use large Images
         <input type="checkbox" checked={isLarge} onChange={handleChecked} />
         <hr />
         <List imageSize={imageSize} />
-      </label>
+      </label> */}
     </div>
   );
 }
