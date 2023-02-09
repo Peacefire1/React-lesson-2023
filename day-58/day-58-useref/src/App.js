@@ -2,6 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import List from "./components/List";
 import StopWatch from "./components/StopWatch";
+import InputFocus from "./components/InputFocus";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
   const [isLarge, setIsLarge] = useState(false);
@@ -16,6 +18,8 @@ function App() {
     <div className="App">
       <h1>Day-50 -useRef</h1>
       <StopWatch />
+      <InputFocus />
+      <VideoPlayer />
       {/* <label htmlFor="">
         Use large Images
         <input type="checkbox" checked={isLarge} onChange={handleChecked} />
