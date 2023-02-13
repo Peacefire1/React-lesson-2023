@@ -182,3 +182,42 @@ label {
 .hover {
   background: #ffffd8;
 }
+
+.footer-container {
+  width: 100vw;
+  height: 70px;
+  padding: 20px 100px;
+  background-color: green;
+  display: flex;
+  justify-content: space-between;
+}
+.header-container {
+  width: 100vw;
+  height: 70px;
+  padding: 20px 100px;
+  background-color: blueviolet;
+  opacity: 0.4;
+  color: aliceblue;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+
+.middle-container {
+  width: 100vw;
+  height: calc(100vh - 140px);
+  padding: 20px;
+}
+.dark {
+  background-color: rgb(19, 19, 19);
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+.green {
+  background-color: green;
+  color: white;
+}
