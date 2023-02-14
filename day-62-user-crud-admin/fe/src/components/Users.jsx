@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useState } from "react";
 
@@ -19,29 +20,41 @@ export default function Users() {
   return (
     <div>
       <h1>Users</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Email</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users &&
-            users.map((user, index) => {
-              return (
-                <tr key={index}>
-                  <td>{user.firstname}</td>
-                  <td>{user.lastname}</td>
-                  <td>{user.email}</td>
-                  <td>{user.address}</td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+      <Grid
+        container
+        spacing={2}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Grid item>
+          <table>
+            <thead>
+              <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users &&
+                users.map((user, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{user.firstname}</td>
+                      <td>{user.lastname}</td>
+                      <td>{user.email}</td>
+                      <td>{user.address}</td>
+                      <td>{user.role.name}</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </Grid>
+      </Grid>
     </div>
   );
 }
