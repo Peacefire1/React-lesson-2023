@@ -4,8 +4,6 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 const { uuid } = require("uuidv4");
-const { request } = require("http");
-const { response } = require("express");
 
 const PORT = 8081;
 
@@ -28,12 +26,21 @@ app
 
     const categoryDataObj = JSON.parse(categoryData);
 
-    const newCategory = {
-      id: uuid(),
-      name: body.catName,
-    };
+    if (isEdit) {
+      categoryDataObj.map((category) => {
+        if (category.id == body.categoryId) {
+          category.name = body.categoryName;
+        }
+        return category;
+      });
+    } else {
+      const newCategory = {
+        id: uuid(),
+        name: body.categoryName,
+      };
+      categoryDataObj.push(newCategory);
+    }
 
-    categoryDataObj.push(newCategory);
     const writeCategoryData = fs.writeFileSync(
       "./data/categories.json",
       JSON.stringify(categoryDataObj)
@@ -106,6 +113,27 @@ app
       data: foundCategory,
     });
   });
+
+app.get("/search", (request, response) => {
+  console.log(request.query);
+
+  const savedCategories = fs.readFileSync("./data/categories.json", {
+    encoding: "utf-8",
+    flag: "r",
+  });
+
+  const savedCategoriesArrayObject = JSON.parse(savedCategories);
+
+  const foundCategory = savedCategoriesArrayObject.filter(
+    // (category) => category.name == request.query.value
+    (category) => category.name.includes(request.query.value)
+  );
+
+  response.json({
+    status: "success",
+    data: foundCategory,
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);
