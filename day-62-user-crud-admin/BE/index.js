@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 
 const app = express();
 const PORT = 8080;
-const SALT_ROUNDs = 10;
+const SALT_ROUNDS = 10;
 
 app.use(cors());
 app.use(express.json());
@@ -40,7 +40,7 @@ app.post("/register", (request, response) => {
 
       const userPassword = body.password;
 
-      bcrypt.genSalt(SALT_ROUNDs, (err, salt) => {
+      bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
         if (err) {
           response.json({
             status: "generating salt error",
@@ -83,13 +83,6 @@ app.post("/register", (request, response) => {
           );
         });
       });
-
-      //   console.log(role);
-
-      const userData = {
-        ...body,
-        role: roleName,
-      };
     });
   });
 });
@@ -153,6 +146,8 @@ app.post("/login", (request, response) => {
       console.log(foundUserObj);
       const plainPassword = body.password;
       const savedPassword = foundUserObj.password;
+      console.log(plainPassword);
+      console.log(savedPassword);
 
       bcrypt.compare(
         plainPassword,
@@ -165,17 +160,17 @@ app.post("/login", (request, response) => {
             });
           }
           if (compareResult) {
-            console.log("it's matches");
+            // console.log("it's matches");
             response.json({
               status: "success",
               data: {
                 email: foundUserObj.email,
-                firstName: foundUserObj.firstname,
-                lastName: foundUserObj.lastname,
+                firstname: foundUserObj.firstname,
+                lastname: foundUserObj.lastname,
               },
             });
           } else {
-            console.log("Invalid password");
+            // console.log("Invalid password");
             response.json({
               status: "Username or Password do not march!!",
               data: [],
@@ -183,6 +178,8 @@ app.post("/login", (request, response) => {
           }
         }
       );
+      const isMatched = bcrypt.compareSync(plainPassword, savedPassword);
+      console.log("ismatched", isMatched);
     }
   });
 });

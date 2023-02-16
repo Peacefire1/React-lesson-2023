@@ -1,34 +1,18 @@
 [
   {
-    "firstname": "ttttt",
-    "lastname": "aaaaa",
-    "email": "bbbbb@gmail.com",
-    "password": "$2b$10$ZMUFakSq/8sX1ONh/8YNVejXWHfbgC5daUtVVtdfPnI/Si4JHK1gG",
-    "address": "bbbb",
-    "role": { "id": 2, "name": "User" }
-  },
-  {
-    "firstname": "peace",
-    "lastname": "peace",
-    "email": "peace@gmail.com",
-    "password": "$2b$10$6khk/MztcUWUeSEE8hGZJeDHDwJJ2YXGfet8v8Uf0LN05zhUOPAAy",
-    "address": "peace",
-    "role": { "id": 2, "name": "User" }
-  },
-  {
-    "firstname": "PPPP",
-    "lastname": "PPPP",
-    "email": "Peace@gmail.com",
-    "password": "$2b$10$Q45bgt9gqieqSlHUvMFxUOEJrkFJZn4XzCYqmbF.hgzguD6v9exS2",
-    "address": "sss",
+    "firstname": "a",
+    "lastname": "b",
+    "email": "c@gmail.com",
+    "password": "$2b$10$0IrkVte3HzQ6BQtfnAijo.tk3WcnsJs2qhrxozkBo/YC65Tm0h1Ky",
+    "address": "abc",
     "role": { "id": 1, "name": "Admin" }
   },
   {
-    "firstname": "123",
-    "lastname": "123123",
-    "email": "haha@gmail.com",
-    "password": "$2b$10$TBfj167Asbss6/7cD/1Mee9tg13KANsiKaFlBL4kFEgQPRj5kLqp2",
-    "address": "asda",
+    "firstname": "TT",
+    "lastname": "TT",
+    "email": "T@gmail.com",
+    "password": "$2b$10$T3s4aBYsZxiKV487Vh/wmudokuYly.i2rFPedcb0W6APfMgCnmdlC",
+    "address": "T",
     "role": { "id": 1, "name": "Admin" }
   }
 ]
