@@ -1,18 +1,1 @@
-[
-  {
-    "firstname": "a",
-    "lastname": "b",
-    "email": "c@gmail.com",
-    "password": "$2b$10$0IrkVte3HzQ6BQtfnAijo.tk3WcnsJs2qhrxozkBo/YC65Tm0h1Ky",
-    "address": "abc",
-    "role": { "id": 1, "name": "Admin" }
-  },
-  {
-    "firstname": "TT",
-    "lastname": "TT",
-    "email": "T@gmail.com",
-    "password": "$2b$10$T3s4aBYsZxiKV487Vh/wmudokuYly.i2rFPedcb0W6APfMgCnmdlC",
-    "address": "T",
-    "role": { "id": 1, "name": "Admin" }
-  }
-]
+[{"firstname":"a","lastname":"b","email":"c@gmail.com","password":"$2b$10$0IrkVte3HzQ6BQtfnAijo.tk3WcnsJs2qhrxozkBo/YC65Tm0h1Ky","address":"abc","role":{"id":1,"name":"Admin"}},{"firstname":"TT","lastname":"TT","email":"T@gmail.com","password":"$2b$10$T3s4aBYsZxiKV487Vh/wmudokuYly.i2rFPedcb0W6APfMgCnmdlC","address":"T","role":{"id":1,"name":"Admin"}},{"firstname":"bbb","lastname":"Tsogtoo","email":"Amaa@gmail.com","password":"$2b$10$52QQKd0/GerI8XcB09w9fOkVpS6ROTE3TJrfGMGRg2ow9IfZsuv.6","address":"a","role":{"id":1,"name":"Admin"}},{"email":"ce@gmail.com","password":"$2b$10$c6ZjorFfq6Cf2gcofPY/2OqtHwrOoO.P1GUvNYjdHhkI8b2WIgDX.","address":"bbb","role":{"id":1,"name":"Admin"}}]
