@@ -1,35 +1,19 @@
-console.log("it is my app.js");
-// import necessary module
-const express = require("express");
-const cors = require("cors");
-const fs = require("fs");
+import express, { request, response } from "express";
+import role_rout from "./routes/userRole.js";
 
-/// condiguration of modules
+import cors from "cors";
+
 const app = express();
-const PORT = 8081;
+const PORT = 8080;
 
-app.use(cors());
 app.use(express.json());
+app.use(cors);
+app.use(role_rout);
 
-//
-app.get("/users", (request, response) => {
-  fs.readFile("./data/ProductData.json", "utf-8", (readError, readData) => {
-    if (readError) {
-      response.json({
-        status: "file reader error",
-        data: [],
-      });
-    }
-    const objectData = JSON.parse(readData);
-
-    response.json({
-      status: "success",
-      data: objectData,
-    });
-    console.log(objectData);
-  });
+app.get("/", (request, response) => {
+  response.send("<h1>Role</h1>");
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Express App is running on http://localhost:${PORT}`);
 });

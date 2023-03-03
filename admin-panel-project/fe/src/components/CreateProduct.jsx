@@ -9,7 +9,6 @@ export default function CreateProduct() {
     const postData = {
       Title: e.target.Title.value,
       Subtitle: e.target.Subtitle.value,
-      
     };
     console.log(postData);
 
@@ -26,6 +25,8 @@ export default function CreateProduct() {
     setUsers(FETCHED_JSON.data);
     console.log(users);
   }
+
+  function handleEdit(e) {}
   return (
     <form onSubmit={handleSubmit}>
       <h1>New Product</h1>

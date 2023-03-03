@@ -1,3 +1,3 @@
-import addTwo from "./math.js";
+// import addTwo from "./math.js";
 
-console.log(addTwo(4,5));
+// console.log(addTwo(1, 2));

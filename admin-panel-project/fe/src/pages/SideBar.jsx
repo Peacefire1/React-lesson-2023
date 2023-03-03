@@ -19,6 +19,7 @@ import Typography from "@mui/material/Typography";
 import Users from "./Users";
 import { Route, Routes } from "react-router-dom";
 import CreateProduct from "../components/CreateProduct";
+import CreateUser from "../components/CreateUser";
 const drawerWidth = 240;
 
 function ResponsiveDrawer(props) {
@@ -142,6 +143,7 @@ function ResponsiveDrawer(props) {
           <Route path="/" />
           <Route path="/users" element={<Users />} />
           <Route path="/users/product" element={<CreateProduct />} />
+          <Route path="/users_role" element={<CreateUser />} />
         </Routes>
       </Box>
     </Box>

@@ -132,6 +132,11 @@ export default function UsersTable() {
           CREATE PRODUCT
         </Button>
       </Link>
+      <Link className="link" to={"/users_role"}>
+        <Button className="button" variant="contained" color="success">
+          CREATE USER
+        </Button>
+      </Link>
 
       <DataGrid
         rows={rows}
