@@ -54,6 +54,7 @@ import {
   getChildrentMenus,
   getParentMenus,
 } from "../servecis/menus-services.js";
+import { getAllProducts, search } from "../servecis/product-services.js";
 
 apiRouter.get("/popular", async (request, response) => {
   const result = await getPopularCategories();
@@ -71,6 +72,16 @@ apiRouter.get("/menus", async (request, response) => {
   );
   //   console.log([]);
   response.status(200).send(parentMenus);
+});
+
+apiRouter.get("/search", async (request, response) => {
+  const keyword = request.query.keyword;
+  const result = await search(keyword);
+  response.status(200).send(result);
+});
+apiRouter.get("/products", async (request, response) => {
+  const result = await getAllProducts();
+  response.status(200).send(result);
 });
 
 export default apiRouter;
