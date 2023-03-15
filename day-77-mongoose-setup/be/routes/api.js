@@ -19,6 +19,17 @@ Router.post("/user", async (request, response) => {
   });
 });
 
+Router.delete("/user", async (request, response) => {
+  const body = request.body;
+  console.log(body);
+
+  const result = await User.deleteOne(body);
+
+  response.json({
+    data: result,
+  });
+});
+
 Router.get("/user", (request, response) => {
   const body = request.body;
   console.log(body);
