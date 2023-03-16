@@ -7,7 +7,7 @@ const apiRouter = require("./routes/api");
 
 const PORT = 8080;
 const MONGO_CONNECTION_STRING =
-  "mongodb+srv://Peacefire:et7G2R7RgdJnCefA@peacefire.w8b3cj6.mongodb.net/test";
+  "mongodb+srv://Peacefire:JOiwRmYQHGL6lwif@peacefire.w8b3cj6.mongodb.net/test";
 
 const app = express();
 app.use(express.json());
