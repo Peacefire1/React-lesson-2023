@@ -1,20 +1,9 @@
-POST http://localhost:8081/create HTTP/1.1
+POST http://localhost:8081/category/create HTTP/1.1
 Content-Type: application/json
 
 [
     {
-        "name":"washing dishes",
-        "checked":false
-    },
-    
-    {
-        "name":"Graceries",
-        "checked":false
-    },
-    
-    {
-        "name":"Bathing kids",
-        "checked":false
+        "name":"washing dishes"
     }
     
 ]

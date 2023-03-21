@@ -1,0 +1,41 @@
+POST http://localhost:8081/todo/create HTTP/1.1
+Content-Type: application/json
+
+[
+    {
+        "name":"washing",
+        "checked":false,
+        "category":"6419307a7a101d57eea43402"
+    }
+    
+]
+
+###
+PUT  http://localhost:8081/update HTTP/1.1
+Content-Type: application/json
+
+[
+    {
+        "checked":false},
+        {
+        "name":"Graceries"
+    }
+    
+]
+
+###
+
+GET http://localhost:8081/todo/list HTTP/1.1
+
+Content-Type: application/json
+
+###
+
+DELETE  http://localhost:8081/delete HTTP/1.1
+Content-Type: application/json
+
+{
+    "checked":false
+}
+
+###
