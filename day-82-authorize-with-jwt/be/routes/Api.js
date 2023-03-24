@@ -3,7 +3,7 @@ const express = require("express");
 const apiRouter = express.Router();
 const auth = require("../middleware/auth");
 
-apiRouter.post("/protected",auth, async (request, response,next) => {
+apiRouter.post("/protected", auth, async (request, response, next) => {
   const body = request.body;
   console.log(body);
 
@@ -11,12 +11,12 @@ apiRouter.post("/protected",auth, async (request, response,next) => {
     data: "Successfully got the protected route",
   });
 });
-apiRouter.post("/unprotected", async (request, response) => {
+apiRouter.post("/unprotected", auth, async (request, response, next) => {
   const body = request.body;
   console.log(body);
 
   response.status(200).json({
-    data: "Successfully got the protected route",
+    data: "Successfully got the unprotected route",
   });
 });
 
