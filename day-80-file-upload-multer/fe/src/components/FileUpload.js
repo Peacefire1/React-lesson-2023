@@ -1,7 +1,8 @@
-import React from "react";
-const URL = "http://localhost:8080/fileUpload";
+import React, { useState } from "react";
 
 const FileUpload = () => {
+  const URL = "http://localhost:8080/fileUpload/";
+  const [imagesUrls, setImagesUrl] = useState([]);
   const handleUpload = async (event) => {
     event.preventDefault();
     console.log(event.target.image.files[0]);
@@ -16,12 +17,17 @@ const FileUpload = () => {
 
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
+    setImagesUrl(FETCHED_JSON.data);
   };
 
   return (
     <form method="post" encType="multipart/form-data" onSubmit={handleUpload}>
       <input type="file" name="image" />
+      <ul>
+        {imagesUrls.map((img, index) => (
+          <img src={img} alt="img" />
+        ))}
+      </ul>
       <button type="submit">Submit</button>
     </form>
   );
