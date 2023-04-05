@@ -5,9 +5,6 @@ export default function contactPage(){
             <li>Twitter: @myusername</li>
             <li>Instagram:myusername</li>
 
-
-
-            
         </ul>
     </div>
 }
