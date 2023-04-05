@@ -1,0 +1,1 @@
+import moviesModel from "../models/movies.model";
