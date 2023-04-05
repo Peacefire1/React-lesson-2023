@@ -1,3 +1,4 @@
+import NavigationBar from '@/components/navigation.bar'
 import React, { useEffect, useState } from 'react'
 
 
@@ -45,14 +46,16 @@ const Theaters =():JSX.Element => {
   
   return (
     <div>
+      <NavigationBar/>
       <h1>Theater list</h1>
       {theater.map((e:ITheater)=>
-
+          
           <p key={e.theaterId}>
             {e.theaterId}
           </p>
         
       )}
+
    
     </div>
   )

@@ -1,5 +1,7 @@
+import NavigationBar from "@/components/navigation.bar";
 import Link from "next/link";
 import React from "react"
+import styles from "@/styles/Home.module.css"
 
 export async function getServerSideProps() {
   const theaterRequest = await fetch("http://localhost:8080/theater/list")
@@ -22,8 +24,10 @@ export default function Home(props:any):JSX.Element {
 
   return (
     
-    <div>
+    <div className={styles.main}>
+      <NavigationBar/>
       welcome
+
       <div>
         you'r  currently on the {side}-side.
       </div>
