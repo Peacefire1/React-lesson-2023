@@ -6,6 +6,8 @@
     /* align-items: center; */
     background-color: orangered;
     height: 150px;
+    max-width: 1440px;
+    margin: auto;
 }
 .logo{
     width: 200px;
@@ -61,3 +63,9 @@
     /* align-items: center; */
     width: 40%;
 }
+
+.image{
+    height: 300px;
+    width: 200px;
+  }
+  

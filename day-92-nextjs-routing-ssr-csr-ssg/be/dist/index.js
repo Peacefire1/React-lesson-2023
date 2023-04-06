@@ -10,6 +10,7 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const Theaters_api_1 = __importDefault(require("./routes/Theaters-api"));
+const Movies_api_1 = __importDefault(require("./routes/Movies-api"));
 dotenv_1.default.config();
 const PORT = process.env.PORT;
 const MONGO_CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://localhost:27017/test";
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
     res.send(name);
 });
 app.use("/theater", Theaters_api_1.default);
+app.use("/movies", Movies_api_1.default);
 app.listen(PORT, () => {
     mongoose_1.default
         .connect(MONGO_CONNECTION_STRING)

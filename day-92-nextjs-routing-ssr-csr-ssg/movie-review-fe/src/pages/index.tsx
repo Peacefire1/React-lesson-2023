@@ -24,7 +24,7 @@ export default function Home(props:any):JSX.Element {
 
   return (
     
-    <div className={styles.main}>
+    <div className={"container"}>
       <NavigationBar/>
       welcome
 

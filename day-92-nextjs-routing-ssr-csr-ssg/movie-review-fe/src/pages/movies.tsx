@@ -1,5 +1,6 @@
 import NavigationBar from '@/components/navigation.bar'
 import React, { useEffect, useState } from 'react'
+import styles from "@/styles/navigation.module.css"
 
 
 
@@ -50,7 +51,7 @@ interface IMovies {
 
 
 
-const URL = "http://localhost:8080/theater/list"
+const URL = "http://localhost:8080/movies/list"
 const Theaters =():JSX.Element => {
   const [movies, setMovies] = useState<IMovies[]>([])
   const moviesList = async():Promise<void>=>{
@@ -64,16 +65,24 @@ const Theaters =():JSX.Element => {
   },[])
   
   return (
-    <div>
+    <div className='container mx-auto'>
       <NavigationBar/>
       <h1>Theater list</h1>
-      {/* {theater.map((e:ITheater)=>
-          
-          <p key={e.theaterId}>
-            {e.theaterId}
+      <div className="flex flex-wrap gap-1 justify-between ">
+
+      {movies.map((e:IMovies)=>
+        <div className='align-center basis-2/12 hover:cursor-pointer border-2 border-indigo-400'>
+          <img className={'m-2'+ " "+styles.image} src={e.poster} alt="" />
+          <h4>{e.genres}</h4>
+          <h3>{e.title}</h3>
+          <p key={e.year}>
+            {e.year}
           </p>
         
-      )} */}
+        </div>
+          
+      )}
+      </div>
 
    
     </div>

@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import theaterRouter from "./routes/Theaters-api";
+import moviesRouter from "./routes/Movies-api";
 dotenv.config();
 
 const PORT = process.env.PORT;
@@ -28,10 +29,12 @@ let name: string = "<h1>Day-90-Express-TypeScript</h1>";
 
 // sheepObject.name = "sheep2"
 // sheepObject.age = 3
+
 app.get("/", (req, res) => {
   res.send(name);
 });
 app.use("/theater", theaterRouter);
+app.use("/movies", moviesRouter);
 
 app.listen(PORT, () => {
   mongoose

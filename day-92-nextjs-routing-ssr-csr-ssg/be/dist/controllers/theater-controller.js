@@ -16,12 +16,12 @@ exports.searchTheaters = exports.getTheaterById = exports.getTheaters = void 0;
 const theaters_model_1 = __importDefault(require("../models/theaters.model"));
 const getTheaters = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const page = Number(req.query.page) || 0;
-    const moviesPerPage = Number(req.query.moviesPerPage) || 5;
+    const theatersPerPage = Number(req.query.theatersPerPage) || 5;
     try {
         const theaters = yield theaters_model_1.default
             .find({})
-            .limit(moviesPerPage)
-            .skip(moviesPerPage * page);
+            .limit(theatersPerPage)
+            .skip(theatersPerPage * page);
         res.status(200).json(theaters);
     }
     catch (error) {
