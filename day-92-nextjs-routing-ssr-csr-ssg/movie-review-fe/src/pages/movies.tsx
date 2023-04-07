@@ -71,8 +71,8 @@ const Theaters =():JSX.Element => {
       <div className="flex flex-wrap gap-1 justify-between ">
 
       {movies.map((e:IMovies)=>
-        <div className='align-center basis-2/12 hover:cursor-pointer border-2 border-indigo-400'>
-          <img className={'m-2'+ " "+styles.image} src={e.poster} alt="" />
+        <div className='align-center basis-2/12 hover:cursor-pointer'>
+          <img className={'m-2 rounded-lg'+styles.image} src={!e.poster ? "/naruto.jpeg" : e.poster } alt="" />
           <h4>{e.genres}</h4>
           <h3>{e.title}</h3>
           <p key={e.year}>
