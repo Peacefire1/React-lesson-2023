@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMovies = void 0;
+exports.getDetails = exports.getMovies = void 0;
 const movies_model_1 = __importDefault(require("../models/movies.model"));
 const getMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const page = Number(req.query.page) || 0;
@@ -30,3 +30,17 @@ const getMovies = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getMovies = getMovies;
+const getDetails = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // const page: number = Number(req.query.page) || 0;
+    // const deatailsPage: number = Number(req.query.deatailsPage) || 25;
+    const { id } = req.params;
+    try {
+        const details = yield movies_model_1.default.findOne({ _id: id });
+        res.status(200).json(details);
+    }
+    catch (error) {
+        console.log("aldaa");
+        res.status(404).json({ data: [] });
+    }
+});
+exports.getDetails = getDetails;
