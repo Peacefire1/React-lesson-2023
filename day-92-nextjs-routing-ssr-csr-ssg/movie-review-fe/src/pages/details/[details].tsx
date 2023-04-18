@@ -1,9 +1,6 @@
 import NavigationBar from "@/components/navigation.bar";
 import Image from "next/image";
 import React from "react";
-import Typography from '@mui/material/Typography'
-import Pagination from '@mui/material/Pagination'
-import Stack from '@mui/material/Stack'
 
 
 interface IMovies {

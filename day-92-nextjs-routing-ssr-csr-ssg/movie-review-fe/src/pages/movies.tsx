@@ -82,7 +82,7 @@ const Theaters = (): JSX.Element => {
         {movies.map((e: IMovies) => (
           <div className="align-center basis-2/12 hover:cursor-pointer">
             <img
-              className={"m-2 rounded-lg" + styles.image}
+              className={"m-2 rounded-lg h-1" + styles.image}
               src={!e.poster ? "/naruto.jpeg" : e.poster}
               alt=""
             />
