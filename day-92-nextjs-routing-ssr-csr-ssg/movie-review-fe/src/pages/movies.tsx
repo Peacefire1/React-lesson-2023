@@ -63,7 +63,7 @@ const Theaters = (): JSX.Element => {
   }, []);
 
   async function sendPage(page: any) {
-    const URL = `http://localhost:8080/movies/list?page=${page}`;
+    const URL = `http://localhost:8081/movies/list?page=${page}`;
     const FETCHED_DATA = await fetch(URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
     setMovies(FETCHED_JSON);
